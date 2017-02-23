@@ -1,7 +1,10 @@
-let stripeInstance = null
-let stripeElements = null
+export const Stripe = {
+  instance: null,
+  createToken: null,
+  elements: null
+}
 
-const baseStyle = {
+export const baseStyle = {
   base: {
     color: '#32325d',
     lineHeight: '24px',
@@ -18,25 +21,21 @@ const baseStyle = {
   }
 }
 
-export const Stripe = {
-  get instance() { return stripeInstance },
-  get elements() { return stripeElements },
-  get baseStyle() { return baseStyle }
-}
-
-export function init(key) {
+function init(key) {
   if (typeof key === "object" && typeof key.elements === "function") {
-    stripeInstance = key
+    Stripe.instance = key
   }
 
-  if (window.Stripe === undefined && stripeInstance === null) {
+  if (window.Stripe === undefined && Stripe.instance === null) {
     console.error('Stripe V3 library not loaded!')
-  } else if (stripeInstance === null) {
-    stripeInstance = window.Stripe(key)
+  } else if (Stripe.instance === null) {
+    Stripe.instance = window.Stripe(key)
   }
 
-  if (stripeInstance && stripeElements === null) {
-    stripeElements = stripeInstance.elements()
+  if (!Stripe.instance.elements) {
+    console.error('Stripe V3 library not loaded!')
+  } else {
+    Stripe.elements = Stripe.instance.elements()
   }
 }
 
@@ -44,7 +43,11 @@ export function create(elementType, key_or_stripe, options = {}) {
   init(key_or_stripe)
   options.style = Object.assign(baseStyle, options.style || {})
 
-  return stripeElements.create(elementType, options)
-}
+  const element = Stripe.elements.create(elementType, options)
 
-export default create
+  if (Stripe.createToken === null) {
+    Stripe.createToken = (options) => Stripe.instance.createToken(element, options)
+  }
+
+  return element
+}

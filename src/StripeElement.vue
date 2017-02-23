@@ -3,7 +3,7 @@
 
 <script>
 import props from './props'
-import create from './stripeElements'
+import { create } from './stripeElements'
 
 export default {
   // please see https://stripe.com/docs/elements/reference for details
