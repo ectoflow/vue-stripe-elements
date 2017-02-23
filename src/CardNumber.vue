@@ -1,5 +1,17 @@
 <template>
-  <stripe-element type='cardNumber' :stripe='stripe' :value='value' :options='options' />
+  <stripe-element
+    type='cardNumber'
+    :stripe='stripe'
+    :value='value'
+    :options='options'
+    @blur='$emit("blur")'
+    @focus='$emit("focus")'
+    @empty='$emit("empty")'
+    @complete='$emit("complete")'
+    @brand='$emit("brand", $event)'
+    @error='$emit("error", $event)'
+    @value='$emit("value", $event)'
+  />
 </template>
 
 <script>
@@ -9,5 +21,10 @@ import StripeElement from './StripeElement'
 export default {
   props,
   components: { StripeElement },
+  methods: {
+    blur () { this.$refs.element.blur() },
+    focus () { this.$refs.element.focus() },
+    update (options) { this.$refs.element.update(options) }
+  }
 }
 </script>
