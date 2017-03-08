@@ -13,14 +13,7 @@ export default {
     this._element = create(this.type, this.stripe, this.options)
     this._element.on('blur', event => this.$emit('blur'))
     this._element.on('focus', event => this.$emit('focus'))
-    this._element.on('change', event => {
-      if (event.empty) this.$emit('empty')
-      if (event.complete) this.$emit('complete')
-      if (event.brand) this.$emit('brand', event.brand)
-      if (event.error) this.$emit('error', event.error.code, event.error.message)
-      if (event.value) this.$emit('value', event.value)
-      // TODO: this.$emit('stripe:change', this.type, event) # One aggregated event needed?
-    })
+    this._element.on('change', event => this.$emit('change', event))
   },
 
   mounted () {

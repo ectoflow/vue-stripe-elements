@@ -6,11 +6,7 @@
     :options='options'
     @blur='$emit("blur")'
     @focus='$emit("focus")'
-    @empty='$emit("empty")'
-    @complete='$emit("complete")'
-    @brand='$emit("brand", $event)'
-    @error='$emit("error", $event)'
-    @value='$emit("value", $event)'
+    @change='$emit("change", $event)'
   />
 </template>
 
