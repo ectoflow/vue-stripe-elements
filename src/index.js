@@ -1,3 +1,4 @@
+import './lib'
 import { Stripe, baseStyle } from './stripeElements'
 import Card from './Card'
 import CardExpiry from './CardExpiry'
