@@ -45,9 +45,7 @@ export function create(elementType, key_or_stripe, options = {}) {
 
   const element = Stripe.elements.create(elementType, options)
 
-  if (Stripe.createToken === null) {
-    Stripe.createToken = (options) => Stripe.instance.createToken(element, options)
-  }
+  Stripe.createToken = (options) => Stripe.instance.createToken(element, options)
 
   return element
 }
