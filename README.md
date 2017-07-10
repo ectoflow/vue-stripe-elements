@@ -25,7 +25,7 @@ import { stripeKey, stripeOptions } from './stripeConfig.json'
 import { Card, createToken } from 'vue-stripe-elements'
 
 export default {
-  date () {
+  data () {
     return { complete: false }
   },
 
