@@ -40,7 +40,7 @@ function init(key, options = {}) {
 }
 
 export function create(elementType, key_or_stripe, options = {}) {
-  init(key_or_stripe, options.elements)
+  init(key_or_stripe, options.elements || {})
   options.style = Object.assign(baseStyle, options.style || {})
 
   const element = Stripe.elements.create(elementType, options)
