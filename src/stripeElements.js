@@ -21,7 +21,7 @@ export const baseStyle = {
   }
 }
 
-function init(key) {
+function init(key, options = {}) {
   if (typeof key === "object" && typeof key.elements === "function") {
     Stripe.instance = key
   }
@@ -35,12 +35,12 @@ function init(key) {
   if (!Stripe.instance.elements) {
     console.error('Stripe V3 library not loaded!')
   } else {
-    Stripe.elements = Stripe.instance.elements()
+    Stripe.elements = Stripe.instance.elements(options)
   }
 }
 
 export function create(elementType, key_or_stripe, options = {}) {
-  init(key_or_stripe)
+  init(key_or_stripe, options.elements)
   options.style = Object.assign(baseStyle, options.style || {})
 
   const element = Stripe.elements.create(elementType, options)
