@@ -4,11 +4,23 @@ A Vue 2 component collection for [stripe elements](https://stripe.com/docs/eleme
 
 ## Usage example
 
-A simple Vue component using the Card element:
+Install package:
+
+```
+$ npm i vue-stripe-elements --save
+```
+
+Add Stripe.js library to **index.html**:
+
+```
+<script src="https://js.stripe.com/v3/"></script>
+```
+
+Build a Vue component using the Card element:
 
 ```html
 <template>
-  <div id='App'>
+  <div id='app'>
     <h1>Please give us your payment details:</h1>
     <card class='stripe-card'
       :class='{ complete }'
@@ -59,3 +71,5 @@ export default {
 }
 </style>
 ```
+
+
