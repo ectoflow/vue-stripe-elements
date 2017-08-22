@@ -1,6 +1,6 @@
 {
   "name": "vue-stripe-elements",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Stripe Elements components for Vue",
   "main": "./dist/index.js",
   "scripts": {
@@ -23,9 +23,7 @@
     "url": "https://github.com/fromatob/vue-stripe-elements/issues"
   },
   "homepage": "https://github.com/fromatob/vue-stripe-elements#readme",
-  "dependencies": {
-    "vue": "^2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
