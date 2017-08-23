@@ -1,5 +1,6 @@
 <template>
   <stripe-element
+    ref='element'
     type='cardCvc'
     :stripe='stripe'
     :value='value'

@@ -1,5 +1,6 @@
 <template>
   <stripe-element
+    ref='element'
     type='cardExpiry'
     :stripe='stripe'
     :value='value'
