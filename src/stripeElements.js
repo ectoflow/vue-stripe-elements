@@ -34,7 +34,7 @@ function init(key, options = {}) {
 
   if (!Stripe.instance.elements) {
     console.error('Stripe V3 library not loaded!')
-  } else {
+  } else if (Stripe.elements === null) {
     Stripe.elements = Stripe.instance.elements(options)
   }
 }
