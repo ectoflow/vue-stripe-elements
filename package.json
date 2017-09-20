@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fromatob/vue-stripe-elements.git"
+    "url": "git+https://github.com/nkoehring/vue-stripe-elements.git"
   },
   "keywords": [
     "vue",
@@ -17,12 +17,12 @@
     "elements",
     "payment"
   ],
-  "author": "Norman Köhring <norman.koehring@fromatob.com>",
+  "author": "Norman Köhring <n@koehr.in>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fromatob/vue-stripe-elements/issues"
+    "url": "https://github.com/nkoehring/vue-stripe-elements/issues"
   },
-  "homepage": "https://github.com/fromatob/vue-stripe-elements#readme",
+  "homepage": "https://github.com/nkoehring/vue-stripe-elements#readme",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.21.0",
