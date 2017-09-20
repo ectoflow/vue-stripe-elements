@@ -3,7 +3,7 @@
 
 <script>
 import props from './props'
-import { create } from './stripeElements'
+import { create, destroy } from './stripeElements'
 
 export default {
   // please see https://stripe.com/docs/elements/reference for details
@@ -26,6 +26,8 @@ export default {
 
   beforeDestroy () {
     this._element.unmount()
+    this._element.destroy()
+    destroy()
   },
 
   methods: {
