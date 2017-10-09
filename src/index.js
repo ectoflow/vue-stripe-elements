@@ -14,5 +14,6 @@ module.exports = {
   PostalCode,
   baseStyle,
   get instance() { return Stripe.instance },
-  get createToken() { return Stripe.createToken }
+  get createToken() { return Stripe.createToken },
+  get createSource() { return Stripe.createSource }
 }
