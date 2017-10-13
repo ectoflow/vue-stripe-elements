@@ -1,5 +1,5 @@
 {
-  "name": "vue-stripe-elements",
+  "name": "fromatob/vue-stripe-elements",
   "version": "0.2.4",
   "description": "Stripe Elements components for Vue",
   "main": "./dist/index.js",
