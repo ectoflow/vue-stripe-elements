@@ -53,7 +53,8 @@ export function create(elementType, key_or_stripe, options = {}) {
 }
 
 export function destroy() {
-    Stripe.instance = null;
-    Stripe.elements = null;
-    Stripe.createToken = null;
+    Stripe.instance = null
+    Stripe.elements = null
+    Stripe.createToken = null
+    Stripe.createSource = null
 }

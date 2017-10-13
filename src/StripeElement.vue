@@ -27,7 +27,7 @@ export default {
   beforeDestroy () {
     this._element.unmount()
     this._element.destroy()
-    destroy();
+    destroy()
   },
 
   methods: {

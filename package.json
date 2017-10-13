@@ -1,6 +1,6 @@
 {
   "name": "vue-stripe-elements",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Stripe Elements components for Vue",
   "main": "./dist/index.js",
   "scripts": {
@@ -17,8 +17,11 @@
     "elements",
     "payment"
   ],
-  "author": "Norman Köhring <norman.koehring@fromatob.com>",
-  "license": "ISC",
+  "author": {
+    "name": "fromAtoB GmbH",
+    "url": "https://fromatob.com"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fromatob/vue-stripe-elements/issues"
   },
