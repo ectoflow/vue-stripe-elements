@@ -1,6 +1,7 @@
 export const Stripe = {
   instance: null,
   createToken: null,
+  createSource: null,
   elements: null
 }
 
@@ -46,6 +47,7 @@ export function create(elementType, key_or_stripe, options = {}) {
   const element = Stripe.elements.create(elementType, options)
 
   Stripe.createToken = (options) => Stripe.instance.createToken(element, options)
+  Stripe.createSource = (options) => Stripe.instance.createSource(element, options)
 
   return element
 }
