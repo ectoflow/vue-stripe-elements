@@ -7,7 +7,7 @@ A Vue 2 component collection for [stripe elements](https://stripe.com/docs/eleme
 Install package:
 
 ```
-$ npm i vue-stripe-elements --save
+$ npm i vue-stripe-elements-plus --save
 ```
 
 Add Stripe.js library to **index.html**:
@@ -34,7 +34,7 @@ Build a Vue component using the Card element:
 
 <script>
 import { stripeKey, stripeOptions } from './stripeConfig.json'
-import { Card, createToken } from 'vue-stripe-elements'
+import { Card, createToken } from 'vue-stripe-elements-plus'
 
 export default {
   data () {
@@ -103,7 +103,7 @@ Even if it is recommended to use the unified Card element, single elements for e
 </template>
 
 <script>
-import { CardNumber, CardExpiry, CardCvc } from 'vue-stripe-elements'
+import { CardNumber, CardExpiry, CardCvc } from 'vue-stripe-elements-plus'
 
 export default {
   props: [ 'stripe', 'options' ],
