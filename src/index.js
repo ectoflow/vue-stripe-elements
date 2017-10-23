@@ -15,5 +15,6 @@ module.exports = {
   baseStyle,
   get instance() { return Stripe.instance },
   get createToken() { return Stripe.createToken },
-  get createSource() { return Stripe.createSource }
+  get createSource() { return Stripe.createSource },
+  get retrieveSource() { return Stripe.retrieveSource }
 }
