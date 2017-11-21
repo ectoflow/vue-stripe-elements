@@ -1,5 +1,6 @@
 <template>
   <stripe-element
+    ref="element"
     type='postalCode'
     :stripe='stripe'
     :value='value'
