@@ -32,6 +32,7 @@ export default {
 
   methods: {
     blur () { this._element.blur() },
+    clear () { this._element.clear() },
     focus () { this._element.focus() },
     update () { this._element.update() }
   }

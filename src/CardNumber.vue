@@ -20,6 +20,7 @@ export default {
   components: { StripeElement },
   methods: {
     blur () { this.$refs.element.blur() },
+    clear () { this.$refs.element.clear() },
     focus () { this.$refs.element.focus() },
     update (options) { this.$refs.element.update(options) }
   }
