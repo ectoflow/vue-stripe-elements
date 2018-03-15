@@ -8,6 +8,7 @@
     @focus='$emit("focus")'
     @empty='$emit("empty")'
     @complete='$emit("complete")'
+    @change='$emit("change", $event)'
     @brand='$emit("brand", $event)'
     @error='$emit("error", $event)'
     @value='$emit("value", $event)'
