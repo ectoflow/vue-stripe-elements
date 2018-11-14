@@ -153,3 +153,72 @@ export default {
 </style>
 ```
 
+# Iban element
+
+Build a Vue component using the Iban element:
+
+```html
+<template>
+  <div id='app'>
+    <h1>Please enter your IBAN number:</h1>
+    <iban class='stripe-iban'
+      :class='{ complete }'
+      stripe='pk_test_XXXXXXXXXXXXXXXXXXXXXXXX'
+      :options='stripeIbanOptions'
+      @change='complete = $event.complete'
+    />
+    <button class='pay-with-stripe' @click='pay' :disabled='!complete'>Pay with IBAN</button>
+  </div>
+</template>
+
+<script>
+import { stripeKey } from './stripeConfig.json'
+import { Iban, createSource } from 'vue-stripe-elements-plus'
+
+export default {
+  data () {
+    return {
+      complete: false,
+      stripeIbanOptions: {
+        // see https://stripe.com/docs/stripe-js/elements/iban for Iban options
+        supportedCountries: ['SEPA'],
+        // If you know the country of the customer, you can optionally pass it to
+        // the Element as placeholderCountry. The example IBAN that is being used
+        // as placeholer will reflect the IBAN format of that country.
+        placeholderCountry: 'DE'
+      },
+      sourceData: {
+        type: 'sepa_debit'
+      }
+    }
+  },
+
+  components: { Iban },
+
+  methods: {
+    pay () {
+      // createSource returns a Promise which resolves in a result object with
+      // either a source or an error key.
+      // See https://stripe.com/docs/api#sources for the source object.
+      // See https://stripe.com/docs/api#errors for the error object.
+      // More general https://stripe.com/docs/stripe-js/elements/iban
+
+      // sourceData, a required object containing the type of Source you want to create,
+      // and any additional payment source information that you have collected.
+      // See the Sources API reference for details
+      createSource(this.sourceData).then(data => console.log(data))
+    }
+  }
+}
+</script>
+
+<style>
+.stripe-iban {
+  width: 300px;
+  border: 1px solid grey;
+}
+.stripe-iban.complete {
+  border-color: green;
+}
+</style>
+```
