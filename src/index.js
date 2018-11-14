@@ -5,6 +5,7 @@ import Card from './Card'
 import CardExpiry from './CardExpiry'
 import CardCvc from './CardCvc'
 import CardNumber from './CardNumber'
+import Iban from './Iban'
 import PostalCode from './PostalCode'
 
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
   CardNumber,
   CardExpiry,
   CardCvc,
+  Iban,
   PostalCode,
   StripeElement,
   baseStyle,
