@@ -9,14 +9,14 @@ export default {
   // please see https://stripe.com/docs/elements/reference for details
   props: Object.assign({type: {type:String, required:true}}, props),
 
-  beforeMount () {
+  mounted () {
+    // The Stripe Element needs to be created after the component has mounted,
+    // otherwise an exception will be thrown on iOS >= 12.2 & macOS >= 10.14.4
     this._element = create(this.type, this.stripe, this.options)
     this._element.on('blur', event => this.$emit('blur'))
     this._element.on('focus', event => this.$emit('focus'))
     this._element.on('change', event => this.$emit('change', event))
-  },
 
-  mounted () {
     // Vue likes to stay in control of $el but Stripe needs a real element
     const el = document.createElement('div')
     this._element.mount(el)
