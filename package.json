@@ -30,9 +30,10 @@
     "lodash": "^4.17.11"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
-    "babel-preset-es2015": "^6.24.1",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.35.2",
