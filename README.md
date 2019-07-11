@@ -163,4 +163,6 @@ export default {
 | redirectToCheckout() | https://stripe.com/docs/stripe-js/reference#stripe-redirect-to-checkout |
 | retrievePaymentIntent() | https://stripe.com/docs/stripe-js/reference#stripe-retrieve-payment-intent |
 | handleCardPayment() | https://stripe.com/docs/stripe-js/reference#stripe-handle-card-payment |
-<!-- | confirmPaymentIntent() | https://stripe.com/docs/stripe-js/reference#stripe-confirm-payment-intent | -->
+| handleCardSetup() | https://stripe.com/docs/stripe-js/reference#stripe-handle-card-setup |
+| confirmPaymentIntent() | https://stripe.com/docs/stripe-js/reference#stripe-confirm-payment-intent |
+| createPaymentMethod() | https://stripe.com/docs/stripe-js/reference#stripe-create-payment-method |
