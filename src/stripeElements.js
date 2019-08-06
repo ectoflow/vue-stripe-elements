@@ -1,6 +1,7 @@
 export const Stripe = {
   instance: null,
   createToken: null,
+  createPaymentMethod: null,
   createSource: null,
   retrieveSource: null,
   elements: null
@@ -48,6 +49,7 @@ export function create(elementType, key_or_stripe, options = {}) {
   const element = Stripe.elements.create(elementType, options)
 
   Stripe.createToken = (options) => Stripe.instance.createToken(element, options)
+  Stripe.createPaymentMethod = (options) => Stripe.instance.createSource('card', element, options)
   Stripe.createSource = (options) => Stripe.instance.createSource(element, options)
   Stripe.retrieveSource = (options) => Stripe.instance.retrieveSource(options)
 
@@ -58,6 +60,7 @@ export function destroy() {
     Stripe.instance = null
     Stripe.elements = null
     Stripe.createToken = null
+    Stripe.createPaymentMenthod = null
     Stripe.createSource = null
     Stripe.retrieveSource = null
 }
