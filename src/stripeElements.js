@@ -3,6 +3,13 @@ export const Stripe = {
   createToken: null,
   createSource: null,
   retrieveSource: null,
+  paymentRequest: null,
+  redirectToCheckout: null,
+  retrievePaymentIntent: null,
+  handleCardPayment: null,
+  handleCardSetup: null,
+  confirmPaymentIntent: null,
+  createPaymentMethod: null,
   elements: null
 }
 
@@ -47,10 +54,17 @@ export function create(elementType, key_or_stripe, options = {}) {
 
   const element = Stripe.elements.create(elementType, options)
 
-  Stripe.createToken = (options) => Stripe.instance.createToken(element, options)
-  Stripe.createSource = (options) => Stripe.instance.createSource(element, options)
-  Stripe.retrieveSource = (options) => Stripe.instance.retrieveSource(options)
-
+  Stripe.createToken = (tokenData) => Stripe.instance.createToken(element, tokenData)
+  Stripe.createSource = (sourceData) => Stripe.instance.createSource(element, sourceData)
+  Stripe.retrieveSource = (source) => Stripe.instance.retrieveSource(source)
+  Stripe.paymentRequest = (options) => Stripe.instance.paymentRequest(options)
+  Stripe.redirectToCheckout = (options) => Stripe.instance.redirectToCheckout(options)
+  Stripe.retrievePaymentIntent = (clientSecret) => Stripe.instance.retrievePaymentIntent(clientSecret)
+  Stripe.handleCardPayment = (clientSecret, data) => Stripe.instance.handleCardPayment(clientSecret, element, data)
+  Stripe.handleCardSetup = (clientSecret, data) => Stripe.instance.handleCardSetup(clientSecret, element, data)
+  Stripe.confirmPaymentIntent = (clientSecret, data) => Stripe.instance.confirmPaymentIntent(clientSecret, element, data)
+  Stripe.createPaymentMethod = (cardType, data) => Stripe.instance.createPaymentMethod(cardType, element, data)
+  
   return element
 }
 
@@ -60,4 +74,11 @@ export function destroy() {
     Stripe.createToken = null
     Stripe.createSource = null
     Stripe.retrieveSource = null
+    Stripe.paymentRequest = null
+    Stripe.redirectToCheckout = null
+    Stripe.retrievePaymentIntent = null
+    Stripe.handleCardPayment = null
+    Stripe.handleCardSetup = null
+    Stripe.confirmPaymentIntent = null
+    Stripe.createPaymentMethod = null
 }
