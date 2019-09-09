@@ -8,6 +8,7 @@ export const Stripe = {
   retrievePaymentIntent: null,
   handleCardPayment: null,
   handleCardSetup: null,
+  handleCardAction: null,
   confirmPaymentIntent: null,
   createPaymentMethod: null,
   elements: null
@@ -62,6 +63,7 @@ export function create(elementType, key_or_stripe, options = {}) {
   Stripe.retrievePaymentIntent = (clientSecret) => Stripe.instance.retrievePaymentIntent(clientSecret)
   Stripe.handleCardPayment = (clientSecret, data) => Stripe.instance.handleCardPayment(clientSecret, element, data)
   Stripe.handleCardSetup = (clientSecret, data) => Stripe.instance.handleCardSetup(clientSecret, element, data)
+  Stripe.handleCardAction = (clientSecret) => Stripe.instance.handleCardSetup(clientSecret)
   Stripe.confirmPaymentIntent = (clientSecret, data) => Stripe.instance.confirmPaymentIntent(clientSecret, element, data)
   Stripe.createPaymentMethod = (cardType, data) => Stripe.instance.createPaymentMethod(cardType, element, data)
   
@@ -79,6 +81,7 @@ export function destroy() {
     Stripe.retrievePaymentIntent = null
     Stripe.handleCardPayment = null
     Stripe.handleCardSetup = null
+    Stripe.handleCardAction = null
     Stripe.confirmPaymentIntent = null
     Stripe.createPaymentMethod = null
 }
