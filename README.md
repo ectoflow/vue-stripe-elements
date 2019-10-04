@@ -164,5 +164,6 @@ export default {
 | retrievePaymentIntent() | https://stripe.com/docs/stripe-js/reference#stripe-retrieve-payment-intent |
 | handleCardPayment() | https://stripe.com/docs/stripe-js/reference#stripe-handle-card-payment |
 | handleCardSetup() | https://stripe.com/docs/stripe-js/reference#stripe-handle-card-setup |
+| handleCardAction() | https://stripe.com/docs/stripe-js/reference#stripe-handle-card-action |
 | confirmPaymentIntent() | https://stripe.com/docs/stripe-js/reference#stripe-confirm-payment-intent |
 | createPaymentMethod() | https://stripe.com/docs/stripe-js/reference#stripe-create-payment-method |
