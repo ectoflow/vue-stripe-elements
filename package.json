@@ -1,6 +1,6 @@
 {
   "name": "vue-stripe-elements-plus",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Stripe Elements components for Vue",
   "main": "./dist/index.js",
   "scripts": {
