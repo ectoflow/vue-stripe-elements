@@ -23,7 +23,7 @@ module.exports = {
   get redirectToCheckout() { return Stripe.redirectToCheckout },
   get retrievePaymentIntent() { return Stripe.retrievePaymentIntent },
   get handleCardPayment() { return Stripe.handleCardPayment },
-  get handleCardSetup() { return Stripe.handleCardSetup },
+  get confirmCardSetup() { return Stripe.confirmCardSetup },
   get handleCardAction() { return Stripe.handleCardAction },
   get confirmPaymentIntent() { return Stripe.confirmPaymentIntent },
   get createPaymentMethod() { return Stripe.createPaymentMethod }

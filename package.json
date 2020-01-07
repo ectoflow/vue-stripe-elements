@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/fromatob/vue-stripe-elements#readme",
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
