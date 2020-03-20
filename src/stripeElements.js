@@ -65,7 +65,7 @@ export function create(elementType, key_or_stripe, options = {}) {
   Stripe.handleCardPayment = (clientSecret, data) => Stripe.instance.handleCardPayment(clientSecret, element, data)
   Stripe.handleCardSetup = (clientSecret, data) => Stripe.instance.handleCardSetup(clientSecret, element, data)
   Stripe.handleCardAction = (clientSecret) => Stripe.instance.handleCardAction(clientSecret)
-  Stripe.confirmCardPayment = (clientSecret, data) => Stripe.instance.confirmCardPayment(clientSecret, element, data)
+  Stripe.confirmCardPayment = (clientSecret, data) => Stripe.instance.confirmCardPayment(clientSecret, {payment_method:{card: element}}, data)
   Stripe.confirmPaymentIntent = (clientSecret, data) => Stripe.instance.confirmPaymentIntent(clientSecret, element, data)
   Stripe.createPaymentMethod = (cardType, data) => Stripe.instance.createPaymentMethod(cardType, element, data)
   
