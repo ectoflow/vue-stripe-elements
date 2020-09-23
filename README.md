@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./vue-stripe-checkout-logo-variant-1.png" alt="drawing" width="250"/>
+  <img src="./vue-stripe-logo-variant-1-small.png" alt="drawing" width="250"/>
   <h1 align="center">Vue Stripe Elements 💳</h1>
 </p>
 
