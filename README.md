@@ -1,4 +1,7 @@
-# Vue Stripe Elements
+<p align="center">
+  <img src="./vue-stripe-checkout-logo-variant-1.png" alt="drawing" width="250"/>
+  <h1 align="center">Vue Stripe Elements 💳</h1>
+</p>
 
 A Vue 2 component collection for [stripe elements](https://stripe.com/docs/elements).
 
