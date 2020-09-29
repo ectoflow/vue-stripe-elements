@@ -11,7 +11,7 @@ export const Stripe = {
   handleCardAction: null,
   confirmPaymentIntent: null,
   createPaymentMethod: null,
-  elements: null
+  elements: null,
 }
 
 export const baseStyle = {
