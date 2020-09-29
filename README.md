@@ -41,7 +41,7 @@ export default {
     return {
       complete: false,
       stripeOptions: {
-        // see https://stripe.com/docs/stripe.js#element-options for details
+        // see https://stripe.com/docs/js/elements_object/create_element?type=card#elements_create-options for details
       }
     }
   },
