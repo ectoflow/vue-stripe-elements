@@ -25,7 +25,7 @@ Build a Vue component using the Card element:
     <card class='stripe-card'
       :class='{ complete }'
       stripe='pk_test_XXXXXXXXXXXXXXXXXXXXXXXX'
-      :options='stripeOptions'
+      :options='options'
       @change='complete = $event.complete'
     />
     <button class='pay-with-stripe' @click='pay' :disabled='!complete'>Pay with credit card</button>
@@ -40,7 +40,7 @@ export default {
   data () {
     return {
       complete: false,
-      stripeOptions: {
+      options: {
         // see https://stripe.com/docs/js/elements_object/create_element?type=card#elements_create-options for details
       }
     }
