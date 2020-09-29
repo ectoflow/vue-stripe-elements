@@ -12,6 +12,9 @@ export const Stripe = {
   confirmPaymentIntent: null,
   createPaymentMethod: null,
   elements: null,
+  stripeAccount: null,
+  apiVersion: null,
+  locale: null,
 }
 
 export const baseStyle = {
@@ -39,7 +42,17 @@ function init(key, options = {}) {
   if (window.Stripe === undefined && Stripe.instance === null) {
     console.error('Stripe V3 library not loaded!')
   } else if (Stripe.instance === null) {
-    Stripe.instance = window.Stripe(key)
+    var stripeOptions = {};
+    if (this.stripeAccount) {
+        stripeOptions.stripeAccount = this.stripeAccount;
+    }
+    if (this.apiVersion) {
+        stripeOptions.apiVersion = this.apiVersion;
+    }
+    if (this.locale) {
+        stripeOptions.locale = this.locale;
+    }
+    Stripe.instance = window.Stripe(key, stripeOptions)
   }
 
   if (!Stripe.instance.elements) {

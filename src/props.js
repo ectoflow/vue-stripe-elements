@@ -7,6 +7,18 @@ export default {
     type: String,
     required: false
   },
+  stripeAccount: {
+    type: String,
+    required: false
+  },
+  apiVersion: {
+    type: String,
+    required: false
+  },
+  locale: {
+    type: String,
+    required: false
+  },
   options: {
     type: Object,
     required: false
