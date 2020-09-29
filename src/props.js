@@ -7,16 +7,8 @@ export default {
     type: String,
     required: false
   },
-  stripeAccount: {
-    type: String,
-    required: false
-  },
-  apiVersion: {
-    type: String,
-    required: false
-  },
-  locale: {
-    type: String,
+  stripeOptions: {
+    type: Object,
     required: false
   },
   options: {

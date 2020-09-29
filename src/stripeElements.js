@@ -12,9 +12,7 @@ export const Stripe = {
   confirmPaymentIntent: null,
   createPaymentMethod: null,
   elements: null,
-  stripeAccount: null,
-  apiVersion: null,
-  locale: null,
+  stripeOptions: null,
 }
 
 export const baseStyle = {
@@ -34,7 +32,7 @@ export const baseStyle = {
   }
 }
 
-function init(key, elementOptions = {}) {
+function init(key, stripeOptions = {}, elementOptions = {}) {
   if (typeof key === "object" && typeof key.elements === "function") {
     Stripe.instance = key
   }
@@ -42,16 +40,6 @@ function init(key, elementOptions = {}) {
   if (window.Stripe === undefined && Stripe.instance === null) {
     console.error('Stripe V3 library not loaded!')
   } else if (Stripe.instance === null) {
-    var stripeOptions = {};
-    if (this.stripeAccount) {
-        stripeOptions.stripeAccount = this.stripeAccount;
-    }
-    if (this.apiVersion) {
-        stripeOptions.apiVersion = this.apiVersion;
-    }
-    if (this.locale) {
-        stripeOptions.locale = this.locale;
-    }
     Stripe.instance = window.Stripe(key, stripeOptions)
   }
 
@@ -63,7 +51,7 @@ function init(key, elementOptions = {}) {
 }
 
 export function create(elementType, key_or_stripe, options = {}) {
-  init(key_or_stripe, options.elements || {})
+  init(key_or_stripe, options.stripeOptions || {}, options.elements || {})
   options.style = Object.assign({}, options.style || baseStyle)
 
   const element = Stripe.elements.create(elementType, options)
@@ -86,6 +74,7 @@ export function create(elementType, key_or_stripe, options = {}) {
 export function destroy() {
     Stripe.instance = null
     Stripe.elements = null
+    Stripe.stripeOptions = null
     Stripe.createToken = null
     Stripe.createSource = null
     Stripe.retrieveSource = null
