@@ -50,8 +50,8 @@ function init(key, stripeOptions = {}, elementOptions = {}) {
   }
 }
 
-export function create(elementType, key_or_stripe, options = {}) {
-  init(key_or_stripe, options.stripeOptions || {}, options.elements || {})
+export function create(elementType, key_or_stripe, options = {}, stripeOptions = {}) {
+  init(key_or_stripe, stripeOptions || {}, options.elements || {})
   options.style = Object.assign({}, options.style || baseStyle)
 
   const element = Stripe.elements.create(elementType, options)
