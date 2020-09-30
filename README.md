@@ -33,7 +33,7 @@ Build a Vue component using the Card element:
 </template>
 
 <script>
-import { stripeKey, stripeOptions } from './stripeConfig.json'
+import { stripeKey, options } from './stripeConfig.json'
 import { Card, createToken } from 'vue-stripe-elements-plus'
 
 export default {
