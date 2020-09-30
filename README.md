@@ -43,7 +43,7 @@ export default {
       complete: false,
       stripeOptions: {
         // see https://stripe.com/docs/js/initializing#init_stripe_js-options for details, this includes `stripeAccount`, `apiVersion` and `locale` settings
-      }
+      },
       options: {
         // see https://stripe.com/docs/js/elements_object/create_element?type=card#elements_create-options for details
       }
