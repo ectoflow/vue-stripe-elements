@@ -25,6 +25,7 @@ Build a Vue component using the Card element:
     <card class='stripe-card'
       :class='{ complete }'
       stripe='pk_test_XXXXXXXXXXXXXXXXXXXXXXXX'
+      :stripeOptions='stripeOptions'
       :options='options'
       @change='complete = $event.complete'
     />
@@ -40,6 +41,9 @@ export default {
   data () {
     return {
       complete: false,
+      stripeOptions: {
+        // see https://stripe.com/docs/js/initializing#init_stripe_js-options for details
+      }
       options: {
         // see https://stripe.com/docs/js/elements_object/create_element?type=card#elements_create-options for details
       }
