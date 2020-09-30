@@ -4,6 +4,7 @@
     type='postalCode'
     :stripe='stripe'
     :value='value'
+    :stripeOptions='stripeOptions'
     :options='options'
     @blur='$emit("blur")'
     @focus='$emit("focus")'
