@@ -1,169 +1,273 @@
 # Vue Stripe Elements
+Flexible and powerful Vue components for Stripe. It's a glue between [Stripe.js](https://stripe.com/docs/js) and Vue component lifecycle.
 
-A Vue 2 component collection for [stripe elements](https://stripe.com/docs/elements).
+- Vue 2 component collection: stable ✅
+- Vue 3 version: in development 🚧
 
-## Usage example
+# Quickstart
 
-Install package:
+### 1. Install package:
 
+```bash
+# npm
+npm i vue-stripe-elements-plus --save-dev
+
+# yarn
+yarn add vue-stripe-elements-plus --dev
 ```
-$ npm i vue-stripe-elements-plus --save
-```
 
-Add Stripe.js library to **index.html**:
-
+### 2. Add Stripe.js library to the page:
 ```
 <script src="https://js.stripe.com/v3/"></script>
 ```
+> Alternatively, you can load Stripe library dynamically. Just make sure it's ready before your components mount.
 
-Build a Vue component using the Card element:
+### 3. Use built-in components
+Create card
 
 ```html
 <template>
-  <div id='app'>
-    <h1>Please give us your payment details:</h1>
-    <card class='stripe-card'
-      :class='{ complete }'
-      stripe='pk_test_XXXXXXXXXXXXXXXXXXXXXXXX'
-      :options='stripeOptions'
-      @change='complete = $event.complete'
-    />
-    <button class='pay-with-stripe' @click='pay' :disabled='!complete'>Pay with credit card</button>
+  <div class="payment-simple">
+    <StripeElements
+      :stripe-key="stripeKey"
+      :instance-options="instanceOptions"
+      :elements-options="elementsOptions"
+      #default="{ elements }" // attention: important part!
+      ref="elms"
+    >
+      <StripeElement
+        type="card"
+        :elements="elements"
+        :options="cardOptions"
+        ref="card"
+      />
+    </StripeElements>
+    <button @click="pay" type="button">Pay</button>
   </div>
 </template>
 
 <script>
-import { stripeKey, stripeOptions } from './stripeConfig.json'
-import { Card, createToken } from 'vue-stripe-elements-plus'
+import { StripeElements, StripeElement } from 'vue-stripe-elements-plus'
 
 export default {
+  name: 'PaymentSimple',
+
+  components: {
+    StripeElements,
+    StripeElement
+  },
+
   data () {
     return {
-      complete: false,
-      stripeOptions: {
-        // see https://stripe.com/docs/stripe.js#element-options for details
+      stripeKey: 'pk_test_TYooMQauvdEDq54NiTphI7jx', // test key, don't hardcode
+      instanceOptions: {
+        // https://stripe.com/docs/js/initializing#init_stripe_js-options
+      },
+      elementsOptions: {
+        // https://stripe.com/docs/js/elements_object/create#stripe_elements-options
+      },
+      cardOptions: {
+        // reactive
+        // remember about Vue 2 reactivity limitations when dealing with options
+        value: {
+          postalCode: ''
+        }
+        // https://stripe.com/docs/stripe.js#element-options
       }
     }
   },
-
-  components: { Card },
 
   methods: {
     pay () {
-      // createToken returns a Promise which resolves in a result object with
-      // either a token or an error key.
-      // See https://stripe.com/docs/api#tokens for the token object.
-      // See https://stripe.com/docs/api#errors for the error object.
-      // More general https://stripe.com/docs/stripe.js#stripe-create-token.
-      createToken().then(data => console.log(data.token))
+      // ref in template
+      const groupComponent = this.$refs.elms
+      const cardComponent = this.$refs.card
+      // Get stripe element
+      const cardElement = cardComponent.stripeElement
+
+      // Access instance methods, e.g. createToken()
+      groupComponent.instance.createToken(cardElement).then(result => {
+        // Handle result.error or result.token
+      })
     }
   }
 }
 </script>
-
-<style>
-.stripe-card {
-  width: 300px;
-  border: 1px solid grey;
-}
-.stripe-card.complete {
-  border-color: green;
-}
-</style>
 ```
 
-
-Multiple elements
-=================
-
-Even if it is recommended to use the unified Card element, single elements for each field are supported. The following example shows a possible use in a credit card component:
+### 4. Get advanced
+Create multiple elements
 
 ```html
-<template>
-  <div class='credit-card-inputs' :class='{ complete }'>
-    <card-number class='stripe-element card-number'
-      ref='cardNumber'
-      :stripe='stripe'
-      :options='options'
-      @change='number = $event.complete'
-    />
-    <card-expiry class='stripe-element card-expiry'
-      ref='cardExpiry'
-      :stripe='stripe'
-      :options='options'
-      @change='expiry = $event.complete'
-    />
-    <card-cvc class='stripe-element card-cvc'
-      ref='cardCvc'
-      :stripe='stripe'
-      :options='options'
-      @change='cvc = $event.complete'
-    />
-  </div>
-</template>
+<StripeElements
+  :stripe-key="stripeKey"
+  :instance-options="instanceOptions"
+  :elements-options="elementsOptions"
+  #default="{ elements }" // attention: important part!
+>
+  <StripeElement
+    type="cardNumber"
+    :elements="elements"
+    :options="cardNumberOptions"
+  />
+  <StripeElement
+    type="postalCode"
+    :elements="elements"
+    :options="postalCodeOptions"
+  />
+</StripeElements>
+```
 
-<script>
-import { CardNumber, CardExpiry, CardCvc } from 'vue-stripe-elements-plus'
+### 5. Go wild
+You can even create multiple groups, don't ask me why. It's possible.
 
-export default {
-  props: [ 'stripe', 'options' ],
-  data () {
-    return {
-      complete: false,
-      number: false,
-      expiry: false,
-      cvc: false
-    }
-  },
-  components: { CardNumber, CardExpiry, CardCvc },
-  methods: {
-    update () {
-      this.complete = this.number && this.expiry && this.cvc
+```html
+<StripeElements
+  :stripe-key="stripeKey1"
+  :instance-options="instanceOptions1"
+  :elements-options="elementsOptions1"
+  #default="{ elements }" // attention: important part!
+>
+  <StripeElement
+    :elements="elements"
+    :options="cardOptions"
+  />
+</StripeElements>
+<StripeElements
+  :stripe-key="stripeKey2"
+  :instance-options="instanceOptions2"
+  :elements-options="elementsOptions2"
+  #default="{ elements }" // attention: important part!
+>
+  <StripeElement
+    type="iban"
+    :elements="elements"
+    :options="ibanOptions"
+  />
+</StripeElements>
+```
 
-      // field completed, find field to focus next
-      if (this.number) {
-        if (!this.expiry) {
-          this.$refs.cardExpiry.focus()
-        } else if (!this.cvc) {
-          this.$refs.cardCvc.focus()
-        }
-      } else if (this.expiry) {
-        if (!this.cvc) {
-          this.$refs.cardCvc.focus()
-        } else if (!this.number) {
-          this.$refs.cardNumber.focus()
-        }
+# Styles
+No base style included. Main reason: overriding it isn't fun. Style as you wish via element options: [see details](https://stripe.com/docs/js/appendix/style).
+
+# API Reference
+
+## StripeElements.vue
+Think of it as of individual group of elements. It crxweates stripe instance and elements object.
+
+```js
+import { StripeElements } from 'vue-stripe-elements-plus'
+```
+
+### props
+```js
+// https://stripe.com/docs/js/initializing#init_stripe_js-options
+stripeKey: {
+  type: String,
+  required: true,
+},
+// https://stripe.com/docs/js/elements_object/create#stripe_elements-options
+instanceOptions: {
+  type: Object,
+  default: () => ({}),
+},
+// https://stripe.com/docs/stripe.js#element-options
+elementsOptions: {
+  type: Object,
+  default: () => ({}),
+},
+```
+
+### data
+You can access `instance` and `elements` by adding ref to StripeElements component.
+```js
+// data of StripeElements.vue
+instance: {},
+elements: {},
+```
+
+### default scoped slot
+Elegant solution for props. Really handy because you can make `instance` and `elements` available to all children without adding extra code.
+
+```html
+<!-- Isn't it cool? I really like it! -->
+<StripeElements #default="{elements, instance}">
+  <StripeElement :elements="elements" />
+  <CustomComponent :instance="instance" />
+</StripeElements>
+```
+
+## StripeElement.vue
+Universal and type agnostic component. Create any element supported by Stripe.
+
+### props
+```js
+// elements object
+// https://stripe.com/docs/js/elements_object/create
+elements: {
+  type: Object,
+  required: true,
+},
+// type of the element
+// https://stripe.com/docs/js/elements_object/create_element?type=card
+type: {
+  type: String,
+  default: () => 'card',
+},
+// element options
+// https://stripe.com/docs/js/elements_object/create_element?type=card#elements_create-options
+options: {
+  type: [Object, undefined],
+},
+```
+
+### data
+```js
+stripeElement
+domElement
+```
+
+### options
+Element options are reactive. Recommendation: don't use v-model on `StripeElement`, instead pass value via options.
+
+```js
+data() {
+  return {
+    elementOptions: {
+      value: {
+        postalCode: ''
       }
-      // no focus magic for the CVC field as it gets complete with three
-      // numbers, but can also have four
     }
-  },
-  watch: {
-    number () { this.update() },
-    expiry () { this.update() },
-    cvc () { this.update() }
+  }
+},
+
+methods: {
+  changePostalCode() {
+    // will update stripe element automatically
+    this.elementOptions.value.postalCode = '12345'
   }
 }
-</script>
-
-<style>
-.credit-card-inputs.complete {
-  border: 2px solid green;
-}
-</style>
 ```
-## Supported Stripe Elements Functions
 
-|Function|Reference|
-|---|---|
-| createToken() | https://stripe.com/docs/stripe-js/reference#stripe-create-token |
-| createSource() | https://stripe.com/docs/stripe-js/reference#stripe-create-source |
-| retrieveSource() | https://stripe.com/docs/stripe-js/reference#stripe-retrieve-source |
-| paymentRequest() | https://stripe.com/docs/stripe-js/reference#stripe-payment-request |
-| redirectToCheckout() | https://stripe.com/docs/stripe-js/reference#stripe-redirect-to-checkout |
-| retrievePaymentIntent() | https://stripe.com/docs/stripe-js/reference#stripe-retrieve-payment-intent |
-| handleCardPayment() | https://stripe.com/docs/stripe-js/reference#stripe-handle-card-payment |
-| handleCardSetup() | https://stripe.com/docs/stripe-js/reference#stripe-handle-card-setup |
-| handleCardAction() | https://stripe.com/docs/stripe-js/reference#stripe-handle-card-action |
-| confirmPaymentIntent() | https://stripe.com/docs/stripe-js/reference#stripe-confirm-payment-intent |
-| createPaymentMethod() | https://stripe.com/docs/stripe-js/reference#stripe-create-payment-method |
+### events
+Following events are emitted on StripeElement
+- change
+- ready
+- focus
+- blur
+- escape
+
+```html
+<StripeElement
+  :elements="elements"
+  @blur="doSomething"
+/>
+```
+
+## Helpers
+In case you like the manual gearbox. Check [stripeElements.js](src/stripeElements.js) for details.
+
+```js
+import { initStripe, createElements, createElement } from 'vue-stripe-elements-plus'
+```
+
