@@ -1,6 +1,6 @@
 {
   "name": "vue-stripe-elements-plus",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Stripe Elements components for Vue",
   "main": "./dist/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   ],
   "author": {
     "name": "Oleksandr Bystrikov",
-    "url": "https://github.com/ectoflow"
+    "url": "https://softbeehive.com"
   },
   "license": "MIT",
   "bugs": {
