@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -30,12 +30,14 @@
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.1",
     "core-js": "^3.9.1",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.8.0",
+    "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "terser-webpack-plugin": "^5.1.1",
     "vue-loader": "^15.9.6",
