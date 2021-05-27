@@ -1,6 +1,6 @@
 {
   "name": "vue-stripe-elements-plus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stripe Elements components for Vue",
   "main": "./dist/index.js",
   "scripts": {
@@ -27,23 +27,23 @@
   },
   "homepage": "https://github.com/ectoflow/vue-stripe-elements#readme",
   "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@babel/preset-env": "^7.13.10",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.6.3",
-    "babel-loader": "^8.2.1",
-    "core-js": "^3.9.1",
-    "eslint": "^7.22.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-vue": "^7.8.0",
-    "jest": "^26.6.3",
-    "prettier": "^2.2.1",
-    "terser-webpack-plugin": "^5.1.1",
-    "vue-loader": "^15.9.6",
+    "babel-jest": "^27.0.0",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.13.0",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.9.0",
+    "jest": "^27.0.0",
+    "prettier": "^2.3.0",
+    "terser-webpack-plugin": "^5.1.2",
+    "vue-loader": "^15.9.7",
     "vue-template-compiler": "^2.6.12",
-    "webpack": "^5.27.1",
-    "webpack-cli": "^4.5.0"
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
   },
   "browserslist": [
     "defaults"

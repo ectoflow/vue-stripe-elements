@@ -153,7 +153,7 @@ No base style included. Main reason: overriding it isn't fun. Style as you wish 
 # API Reference
 
 ## StripeElements.vue
-Think of it as of individual group of elements. It crxweates stripe instance and elements object.
+Think of it as of individual group of elements. It creates stripe instance and elements object.
 
 ```js
 import { StripeElements } from 'vue-stripe-elements-plus'
