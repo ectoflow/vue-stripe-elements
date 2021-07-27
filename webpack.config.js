@@ -8,9 +8,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
-    library: 'vue-stripe-elements',
-    libraryTarget: 'umd',
-    umdNamedDefine: true,
+    globalObject: 'this',
+    library: {
+      name: 'vue-stripe-elements',
+      type: 'umd',
+      umdNamedDefine: true,
+    },
   },
   resolve: {
     extensions: ['.js', '.vue'],
