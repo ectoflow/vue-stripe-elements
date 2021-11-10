@@ -2,7 +2,7 @@
 Flexible and powerful Vue components for Stripe. It's a glue between [Stripe.js](https://stripe.com/docs/js) and Vue component lifecycle.
 
 - Vue 2 component collection: stable ✅
-- Vue 3 version: in development 🚧
+- Vue 3: use [vue-stripe-js](https://github.com/ectoflow/vue-stripe-js) 
 
 # Quickstart
 
