@@ -1,10 +1,9 @@
-[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct.svg)](https://vshymanskyy.github.io/StandWithUkraine)
+# ⚠️ Deprecated ⚠️
+This package is no longer maintained. Vue 2 [reached its end-of-life](https://blog.vuejs.org/posts/vue-2-eol) on December 31st, 2023.
 
 # Vue Stripe Elements
-Flexible and powerful Vue components for Stripe. It's a glue between [Stripe.js](https://stripe.com/docs/js) and Vue component lifecycle.
-
-- Vue 2 component collection: stable ✅
-- Vue 3: use [vue-stripe-js](https://github.com/ectoflow/vue-stripe-js) 
+- Vue 2: deprecated ❗️
+- Vue 3: use [vue-stripe-js](https://github.com/ectoflow/vue-stripe-js) ✅
 
 # Quickstart
 
